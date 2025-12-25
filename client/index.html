@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snake & Ladder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- GAME OVER OVERLAY -->
+<div id="gameOver" class="game-over hidden">
+  <h2 id="winnerText">🎉 Player Wins!</h2>
+
+  <div class="game-over-buttons">
+    <button id="replayBtn">🔄 Replay</button>
+    <button id="exitBtn">❌ Exit</button>
+  </div>
+</div>
+
+<div class="game-ui">
+
+  <!-- CONTROL PANEL -->
+  <div class="control-panel">
+
+    <div class="dashboard">
+
+      <!-- LEFT DASH -->
+      <div class="dash-left">
+        <h2 class="title">🎮 Snake & Ladder</h2>
+
+        <div class="dice-box">
+          <img id="dice" src="images/dice/dice1.png" class="dice">
+        </div>
+
+        <button id="rollBtn" class="roll-btn">🎲 ROLL DICE</button>
+
+        <div id="status" class="status">Player 1's Turn</div>
+      </div>
+
+      <!-- RIGHT DASH (EXPANDS X-AXIS) -->
+      <div class="dash-right">
+
+        <div class="player-mode">
+          <div class="mode-card" data-count="1"><span class="icon">🎮</span><span class="label">1P</span></div>
+          <div class="mode-card" data-count="2"><span class="icon">👫</span><span class="label">2P</span></div>
+          <div class="mode-card" data-count="3"><span class="icon">👨‍👩‍👧</span><span class="label">3P</span></div>
+          <div class="mode-card" data-count="4"><span class="icon">👨‍👩‍👧‍👦</span><span class="label">4P</span></div>
+          <div class="mode-card" data-count="5"><span class="icon">🧑‍🤝‍🧑</span><span class="label">5P</span></div>
+          <div class="mode-card" data-count="6"><span class="icon">👥</span><span class="label">6P</span></div>
+        </div>
+
+        <div id="playerNames" class="player-names"></div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- BOARD -->
+  <div class="board-wrapper">
+    <img src="images/board.png" class="board">
+
+    <div id="p1" class="coin p1 outside"></div>
+    <div id="p2" class="coin p2 outside"></div>
+    <div id="p3" class="coin p3 outside"></div>
+    <div id="p4" class="coin p4 outside"></div>
+    <div id="p5" class="coin p5 outside"></div>
+    <div id="p6" class="coin p6 outside"></div>
+  </div>
+
+</div>
+
+<audio id="diceSound" src="audio/dice.mp3"></audio>
+<audio id="moveSound" src="audio/move.mp3"></audio>
+<audio id="ladderSound" src="audio/ladder.mp3"></audio>
+<audio id="snakeSound" src="audio/snake.mp3"></audio>
+<audio id="winSound" src="audio/win.mp3"></audio>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="game.js"></script>
+
+</body>
+</html>

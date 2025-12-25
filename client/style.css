@@ -1,0 +1,249 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* BACKGROUND */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background:
+    radial-gradient(circle at top left, #3a0ca3, transparent 40%),
+    radial-gradient(circle at top right, #4361ee, transparent 40%),
+    radial-gradient(circle at bottom left, #7209b7, transparent 40%),
+    radial-gradient(circle at bottom right, #f72585, transparent 40%),
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* MAIN LAYOUT */
+.game-ui {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 30px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* CONTROL PANEL */
+.control-panel {
+  background: linear-gradient(160deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95));
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: 0 0 25px rgba(255,215,0,0.35),
+              inset 0 0 20px rgba(255,255,255,0.05);
+}
+
+/* DASHBOARD SPLIT */
+.dashboard {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* LEFT SIDE */
+.dash-left {
+  width: 260px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* RIGHT SIDE */
+.dash-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 240px;
+}
+
+/* TITLE */
+.title {
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px gold;
+}
+
+/* PLAYER MODE */
+.player-mode {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mode-card {
+  background: linear-gradient(145deg, #222, #111);
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.mode-card.active {
+  background: linear-gradient(145deg, gold, orange);
+  color: #000;
+  box-shadow: 0 0 18px gold;
+}
+
+.mode-card .icon {
+  font-size: 24px;
+}
+
+.mode-card .label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* PLAYER NAMES */
+.player-names {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.player-names input {
+  padding: 8px;
+  border-radius: 18px;
+  border: none;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* DICE */
+.dice-box {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.dice {
+  width: 120px;
+  filter: drop-shadow(0 0 15px gold);
+}
+
+.dice.rolling {
+  animation: roll 0.6s infinite linear;
+}
+
+@keyframes roll {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ROLL BUTTON — CLICK FIX */
+.roll-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #ffd700, #ff9f1c);
+  font-weight: bold;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 10;          /* 🔥 ensures click */
+  pointer-events: auto;
+}
+
+.roll-btn:active {
+  transform: scale(0.96);
+}
+
+/* STATUS */
+.status {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+/* BOARD */
+.board-wrapper {
+  position: relative;
+  width: 460px;
+  height: 460px;
+}
+
+
+.board {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+}
+
+/* COINS */
+.coin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  position: absolute;
+  transition: left 0.25s linear, bottom 0.25s linear;
+}
+
+.p1 { background: gold; }
+.p2 { background: red; }
+.p3 { background: dodgerblue; }
+.p4 { background: limegreen; }
+.p5 { background: violet; }
+.p6 { background: cyan; }
+
+.coin.outside {
+  left: -35px;
+  top: 430px;
+}
+
+/* GAME OVER OVERLAY */
+.game-over {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: white;
+  text-align: center;
+}
+
+.game-over.hidden {
+  display: none;
+}
+
+.game-over h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px gold;
+}
+
+.game-over-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.game-over-buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#replayBtn {
+  background: linear-gradient(135deg, #00ffcc, #00cc99);
+}
+
+#exitBtn {
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+}
+
